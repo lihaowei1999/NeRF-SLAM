@@ -14,10 +14,10 @@ from torch import nn
 import torch.nn.functional as F
 from torch_scatter import scatter_sum
 
-from utils.flow_viz import *
+from nerfSlam.utils.flow_viz import *
 
-import networks.geom.projective_ops as pops
-from networks.modules.corr import CorrBlock, AltCorrBlock
+import nerfSlam.networks.geom.projective_ops as pops
+from nerfSlam.networks.modules.corr import CorrBlock, AltCorrBlock
 
 import lietorch
 from lietorch import SE3
@@ -56,8 +56,8 @@ class VisualFrontend(nn.Module):
     def forward(self, mini_batch):
         pass
 
-from networks.modules.extractor import BasicEncoder
-from networks.droid_net import UpdateModule
+from nerfSlam.networks.modules.extractor import BasicEncoder
+from nerfSlam.networks.droid_net import UpdateModule
 
 class RaftVisualFrontend(VisualFrontend):
     def __init__(self, world_T_body_t0, body_T_cam0, args, device="cpu"):
@@ -240,7 +240,7 @@ class RaftVisualFrontend(VisualFrontend):
     def forward(self, batch):
         # The output of RaftVisualFrontend is not dense optical flow
         # but rather a bunch of pose-to-pose factors resulting from the reduced camera matrix.
-        print("RaftVisualFrontend.forward")
+        # print("RaftVisualFrontend.forward")
 
         k = batch["k"][0]
 
@@ -1382,7 +1382,7 @@ class RaftVisualFrontend(VisualFrontend):
                       }
             self.viz_idx[:] = False
         else:
-            print("viz_index is empty, nothing to visualize")
+            # print("viz_index is empty, nothing to visualize")
             if batch["is_last_frame"]:
                 ic("Last frame")
                 # Leave all the entries null, this signals end of seq
