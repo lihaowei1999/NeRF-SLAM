@@ -14,10 +14,10 @@ from torch import nn
 import torch.nn.functional as F
 from torch_scatter import scatter_sum
 
-from nerfSlam.utils.flow_viz import *
+from thirdparty.nerfSlam.utils.flow_viz import *
 
-import nerfSlam.networks.geom.projective_ops as pops
-from nerfSlam.networks.modules.corr import CorrBlock, AltCorrBlock
+import thirdparty.nerfSlam.networks.geom.projective_ops as pops
+from thirdparty.nerfSlam.networks.modules.corr import CorrBlock, AltCorrBlock
 
 import lietorch
 from lietorch import SE3
@@ -56,8 +56,8 @@ class VisualFrontend(nn.Module):
     def forward(self, mini_batch):
         pass
 
-from nerfSlam.networks.modules.extractor import BasicEncoder
-from nerfSlam.networks.droid_net import UpdateModule
+from thirdparty.nerfSlam.networks.modules.extractor import BasicEncoder
+from thirdparty.nerfSlam.networks.droid_net import UpdateModule
 
 class RaftVisualFrontend(VisualFrontend):
     def __init__(self, world_T_body_t0, body_T_cam0, args, device="cpu"):

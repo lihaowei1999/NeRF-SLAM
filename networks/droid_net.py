@@ -4,16 +4,16 @@ import torch.nn as nn
 import torch.nn.functional as F
 from collections import OrderedDict
 
-from nerfSlam.networks.modules.extractor import BasicEncoder
-from nerfSlam.networks.modules.corr import CorrBlock
-from nerfSlam.networks.modules.gru import ConvGRU
-from nerfSlam.networks.modules.clipping import GradientClip
+from thirdparty.nerfSlam.networks.modules.extractor import BasicEncoder
+from thirdparty.nerfSlam.networks.modules.corr import CorrBlock
+from thirdparty.nerfSlam.networks.modules.gru import ConvGRU
+from thirdparty.nerfSlam.networks.modules.clipping import GradientClip
 
 from lietorch import SE3
-from nerfSlam.networks.geom.ba import BA
+from thirdparty.nerfSlam.networks.geom.ba import BA
 
-import nerfSlam.networks.geom.projective_ops as pops
-from nerfSlam.networks.geom.graph_utils import graph_to_edge_list, keyframe_indicies
+import thirdparty.nerfSlam.networks.geom.projective_ops as pops
+from thirdparty.nerfSlam.networks.geom.graph_utils import graph_to_edge_list, keyframe_indicies
 
 from torch_scatter import scatter_mean
 
